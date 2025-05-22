@@ -4,7 +4,10 @@
   --background: #fdfdf7;
   --foreground: #171717;
   --gold-light: #ffd700;
+  --gold-light-rgba-50: rgba(255, 215, 0, 0.5);
   --gold-dark: #b8860b;
+  --gold-dark-rgba-50: rgba(184, 134, 11, 0.5);
+
   --font-geist-sans: "Geist Sans", sans-serif;
   --font-geist-mono: "Geist Mono", monospace;
 }
@@ -22,13 +25,24 @@ body {
   font-family: var(--font-geist-sans);
 }
 
-.prompt-box {
-  border-color: var(--gold-dark);
-  border-width: 4px;
-  border-style: solid;
+.active-input {
+  transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 8px;
+  box-shadow: 0px 0px 0px 2px var(--gold-dark-rgba-50);
+}
+.active-input:focus,
+.active-input:focus-within {
+  border-radius: 8px;
+  box-shadow: 0px 0px 0px 4px var(--gold-light-rgba-50);
+}
+
+.prompt-box {
+  background-color: var(--background);
   width: 100%;
-  padding: 10px;
+  padding: 10px, 10px, 0px, 10px;
+  padding-bottom: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .prompt-box input {
@@ -39,11 +53,28 @@ body {
   width: 10%;
 }
 
-.prompt-box {
+.chat-box {
+  border-color: var(--gold-dark);
+  border-width: 4px;
+  border-style: solid;
+  border-radius: 8px;
+  width: 100%;
+  padding: 10px;
+}
+
+.chat-box input {
+  width: 90%;
+}
+
+.chat-box button {
+  width: 10%;
+}
+
+.chat-box {
   transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.prompt-box:focus,
-.prompt-box:focus-within {
+.chat-box:focus,
+.chat-box:focus-within {
   border-color: var(--gold-light);
   box-shadow: 0 5px 15px rgba(184, 134, 11, 0.4);
 }
@@ -69,11 +100,17 @@ body {
   color: white;
   transition: all 0.1s ease;
   border-radius: 8px;
+  padding: 8px 16px;
+  transition: opacity 0.2s ease;
 }
 
 .gold-button:hover {
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(184, 134, 11, 0.4);
+}
+
+.gold-button:disabled {
+  opacity: 0.5;
 }
 
 input:focus,
