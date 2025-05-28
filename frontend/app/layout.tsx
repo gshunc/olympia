@@ -24,10 +24,12 @@ export default function RootLayout({
         <main>
           <div className="flex flex-col">
             <div className="flex flex-col lg:flex-row h-svh">
-              <div className="flex shrink h-auto lg:ml-12 overflow-y-auto lg:w-5/6 flex-col">
-                {children}
-              </div>
               <Navigation />
+              <div className="flex shrink h-auto lg:mr-12 overflow-y-auto lg:w-5/6 flex-col">
+                <div className="lg:ml-20 lg:mr-20 mr-5 ml-5 flex flex-col lg:block lg:mt-5 scroll-auto lg:mr-20 pt-20">
+                  {children}
+                </div>
+              </div>
             </div>
           </div>
         </main>

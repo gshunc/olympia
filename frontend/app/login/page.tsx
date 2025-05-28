@@ -3,7 +3,7 @@ import { login, signup } from "./actions";
 export default function LoginPage() {
   return (
     <form className="flex flex-col gap-2 p-4 w-1/3">
-      <label className="gold-text" htmlFor="email">
+      <label className="gold-text-bold" htmlFor="email">
         Email:
       </label>
       <input
@@ -13,7 +13,7 @@ export default function LoginPage() {
         type="email"
         required
       />
-      <label className="gold-text" htmlFor="password">
+      <label className="gold-text-bold" htmlFor="password">
         Password:
       </label>
       <input

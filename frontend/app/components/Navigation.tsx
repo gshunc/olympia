@@ -14,7 +14,7 @@ const routes = [
   {
     name: "My Goals",
     message: "Explore your goals",
-    href: "/my-goals",
+    href: "/goals",
     isReferrer: false,
     fa: faDiagramProject,
   },
@@ -46,7 +46,7 @@ export const Navigation = () => {
   const pathname = usePathname();
 
   return (
-    <div className="flex pt-5 lg:h-screen lg:justify-between lg:flex-col lg:content-center pb-2 lg:pb-0 lg:pt-10 lg:pb-10 rounded-t-lg lg:rounded-none border-l-2 border-t-2 border-r-2 lg:border-t-0 lg:border-r-0 lg:w-72 lg:overflow-y-auto gold-border">
+    <div className="flex pt-5 lg:h-screen lg:justify-between lg:flex-col lg:content-center pb-2 lg:pb-0 lg:pt-10 lg:pb-10 rounded-t-lg lg:rounded-none border-l-2 border-t-2 border-r-2 lg:border-t-0 lg:border-l-0 lg:w-72 lg:overflow-y-auto">
       <div className="flex flex-row justify-around lg:justify-between w-screen lg:space-x-0 lg:mt-12 pl-3 pr-3 lg:pl-8 lg:pr-8 lg:container lg:flex-col lg:text-left lg:float-right">
         {routes.map((link) => (
           <Link
@@ -63,7 +63,7 @@ export const Navigation = () => {
                 <FontAwesomeIcon icon={link.fa} className="text-amber-600" />
               )}{" "}
               {link.name}{" "}
-              <span className="hidden lg:inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none gold-text">
+              <span className="hidden lg:inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none gold-text-bold">
                 -&gt;
               </span>
             </h2>
@@ -72,16 +72,16 @@ export const Navigation = () => {
             </p>
           </Link>
         ))}
-        {pathname != "/" && (
+        {pathname != "/" && pathname != "/login" && (
           <Link
             href="/"
-            className="block group rounded-lg lg:border lg:px-5 lg:py-4 transition-colors hover:bg-gray-100"
+            className="block group rounded-lg lg:gold-border lg:px-5 lg:py-4 transition-colors hover:bg-gray-100"
           >
             <h2
               className={`text-xs flex flex-col lg:block lg:text-lg font-semibold`}
             >
               <FontAwesomeIcon icon={faHome} className="text-amber-600" /> Home
-              <span className="hidden lg:inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none gold-text">
+              <span className="hidden lg:inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none gold-text-bold">
                 -&gt;
               </span>
             </h2>
@@ -89,7 +89,7 @@ export const Navigation = () => {
         )}
       </div>
       <div className="flex flex-row items-center lg:items-start justify-around lg:flex-col lg:content-center w-screen lg:space-x-0 lg:mt-12 pl-3 pr-3 lg:pl-8 lg:pr-8 lg:container lg:text-left lg:float-right">
-        <p className="font-semibold px-5 gold-text">Account</p>
+        <p className="font-semibold px-5 gold-text-bold">Account</p>
         {miniLinks.map((link) => (
           <Link
             href={link.href}
@@ -101,7 +101,7 @@ export const Navigation = () => {
               className={`text-xs flex flex-col text-center font-semibold lg:text-left lg:text-sm lg:block`}
             >
               {link.name}{" "}
-              <span className="hidden lg:inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none gold-text">
+              <span className="hidden lg:inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none gold-text-bold">
                 -&gt;
               </span>
             </h2>
@@ -115,7 +115,7 @@ export const Navigation = () => {
             className={`text-xs flex flex-col text-center font-semibold lg:text-left lg:text-sm lg:block`}
           >
             Logout{" "}
-            <span className="hidden lg:inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none gold-text">
+            <span className="hidden lg:inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none gold-text-bold">
               -&gt;
             </span>
           </h2>

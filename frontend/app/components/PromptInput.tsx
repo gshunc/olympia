@@ -2,6 +2,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { useState, useRef, useEffect } from "react";
+import ReactMarkdown from "react-markdown";
+import { useRouter } from "next/navigation";
 
 export function PromptInput(props: { email: string | undefined }) {
   const email = props.email;
@@ -13,7 +15,7 @@ export function PromptInput(props: { email: string | undefined }) {
   const [atBottom, setAtBottom] = useState<boolean>(false);
   const bottomRef = useRef<HTMLDivElement | null>(null);
   const scrolledRef = useRef<HTMLDivElement | null>(null);
-
+  const router = useRouter();
   useEffect(() => {
     const el = scrolledRef.current;
     if (!el) return;
@@ -36,7 +38,7 @@ export function PromptInput(props: { email: string | undefined }) {
     const currentPrompt = prompt.trim();
     if (!currentPrompt) return;
     if (!email) {
-      window.location.href = "/login";
+      router.push("/login");
       return;
     }
 
@@ -80,23 +82,23 @@ export function PromptInput(props: { email: string | undefined }) {
       {history.length > 0 && (
         <div className="flex flex-col gap-y-4 chat-box">
           {history.map((message, index) => (
-            <p
+            <div
               key={index}
               className={`whitespace-pre-line ${
                 message.role === "user" ? "self-end" : "self-start"
               } max-w-[70%] ${
                 message.role === "user" ? "bg-amber-100" : "bg-gray-100"
-              } p-2 rounded`}
+              } p-4 rounded`}
             >
-              {message.content}
-            </p>
+              <ReactMarkdown>{message.content}</ReactMarkdown>
+            </div>
           ))}
           {streamingResponse && (
-            <p
-              className={`whitespace-pre-line self-start max-w-[70%] bg-gray-100 p-2 rounded`}
+            <div
+              className={`whitespace-pre-line self-start max-w-[70%] bg-gray-100 p-4 rounded`}
             >
-              {streamingResponse}
-            </p>
+              <ReactMarkdown>{streamingResponse}</ReactMarkdown>
+            </div>
           )}
         </div>
       )}
